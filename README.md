@@ -10,55 +10,98 @@ Professional ladder logic editor for industrial motor control applications.
 - **Professional Tools**: Address management, wire numbering, validation
 - **Standards Compliance**: IEC 61131-3 and industry standards support
 
-## Quick Start
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) v18 or higher
+- npm v9 or higher (bundled with Node.js)
+
+## Setup
+
+### 1. Clone the repository
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Run tests
-npm test
+git clone https://github.com/Turbo-the-tech-dev/motor-control-app.git
+cd motor-control-app
 ```
 
-## Architecture
+### 2. Install dependencies
 
-The application follows a modular architecture:
+```bash
+npm install
+```
 
-- **Presentation Layer**: React components with Canvas API for rendering
-- **Business Logic**: Simulation engine and component validation
-- **Data Layer**: TypeScript models for ladder elements and projects
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+The app will open automatically at `http://localhost:3000`.
+
+## Available Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start development server on port 3000 |
+| `npm run build` | Type-check and build for production (output: `dist/`) |
+| `npm run preview` | Preview the production build locally |
+| `npm test` | Run tests with Vitest |
+| `npm run test:ui` | Run tests with Vitest browser UI |
+| `npm run lint` | Lint TypeScript/TSX files with ESLint |
+| `npm run typecheck` | Run TypeScript type checking without emitting files |
+| `npm run format` | Format all files with Prettier |
 
 ## Project Structure
 
 ```
-src/
-├── components/     # React UI components
-├── services/       # Business logic and state management
-├── types/          # TypeScript type definitions
-├── utils/          # Utility functions
-└── assets/         # Static assets
+motor-control-app/
+├── src/
+│   ├── components/     # React UI components
+│   ├── services/       # Business logic and state management
+│   ├── types/          # TypeScript type definitions
+│   ├── utils/          # Utility functions
+│   └── assets/         # Static assets
+├── public/             # Static public files
+├── tests/              # Test files
+├── index.html          # HTML entry point
+├── vite.config.ts      # Vite configuration
+├── tsconfig.json       # TypeScript configuration
+├── tailwind.config.js  # Tailwind CSS configuration
+└── package.json
 ```
 
 ## Technology Stack
 
-- React 18 + TypeScript
-- Canvas API (Konva.js)
-- Redux Toolkit for state management
-- Tailwind CSS for styling
-- Vite for development and building
+| Layer | Technology |
+|-------|------------|
+| UI Framework | React 18 + TypeScript |
+| Canvas Rendering | Konva.js / react-konva |
+| State Management | Redux Toolkit + Zustand |
+| Styling | Tailwind CSS |
+| Animations | Framer Motion |
+| Drag & Drop | react-dnd |
+| Build Tool | Vite |
+| Testing | Vitest |
+
+## Path Aliases
+
+The following import aliases are configured in `tsconfig.json` and `vite.config.ts`:
+
+```ts
+@/           → src/
+@components/ → src/components/
+@services/   → src/services/
+@types/      → src/types/
+@utils/      → src/utils/
+@assets/     → src/assets/
+```
 
 ## Contributing
 
-1. Follow the existing code conventions
+1. Fork the repository and create a feature branch
 2. Run `npm run lint` and `npm run typecheck` before committing
 3. Add tests for new features
-4. Update documentation as needed
+4. Open a pull request against `master`
 
 ## License
 

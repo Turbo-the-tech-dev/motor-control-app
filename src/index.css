@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+  
+  .btn-primary {
+    @apply btn bg-industrial-blue text-white hover:bg-industrial-blue/90;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-industrial-gray text-white hover:bg-industrial-gray/90;
+  }
+  
+  .btn-outline {
+    @apply btn border border-industrial-gray bg-transparent hover:bg-industrial-gray hover:text-white;
+  }
+  
+  .ladder-grid {
+    @apply bg-white border border-industrial-gray;
+    background-image: 
+      linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  }
+  
+  .component-item {
+    @apply flex flex-col items-center p-2 border border-industrial-gray rounded hover:bg-industrial-light cursor-move transition-colors;
+  }
+  
+  .simulation-running {
+    @apply border-l-4 border-industrial-green bg-green-50;
+  }
+  
+  .simulation-stopped {
+    @apply border-l-4 border-industrial-red bg-red-50;
+  }
+  
+  .error-indicator {
+    @apply bg-industrial-red text-white text-xs px-1 rounded-full;
+  }
+  
+  .warning-indicator {
+    @apply bg-industrial-yellow text-black text-xs px-1 rounded-full;
+  }
+}

@@ -9,6 +9,7 @@ import { ProjectExplorer } from '@components/ProjectExplorer'
 import { MenuBar } from '@components/MenuBar'
 import { ToolBar } from '@components/ToolBar'
 import { StatusBar } from '@components/StatusBar'
+import { AIAssistant } from '@components/AIAssistant/AIAssistant'
 import { useAppSelector } from '@services/store/hooks'
 
 function App() {
@@ -60,8 +61,16 @@ function App() {
         </div>
         
         {/* Right Sidebar */}
-        <div className="w-80 border-l border-industrial-gray bg-white">
+        <div className="w-80 border-l border-industrial-gray bg-white flex flex-col">
           <PropertiesPanel />
+          <div className="flex-1 min-h-0">
+            <AIAssistant
+              currentDiagram={currentProject?.activeDiagram}
+              onDiagramGenerated={(diagram) => {
+                console.log('AI generated diagram:', diagram)
+              }}
+            />
+          </div>
         </div>
       </div>
       

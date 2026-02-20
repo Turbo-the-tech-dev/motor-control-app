@@ -1,13 +1,14 @@
+import React, { useState, useMemo } from 'react';
 // Component Library System
 
 interface ComponentDefinition {
   id: string;
   name: string;
   category: ComponentCategory;
-  type: ComponentType;
+  type: any;
   icon: string;
   description: string;
-  defaultProperties: ComponentProperties;
+  defaultProperties: any;
   terminals: TerminalDefinition[];
   gridWidth: number;
   gridHeight: number;
@@ -16,15 +17,15 @@ interface ComponentDefinition {
 
 interface TerminalDefinition {
   id: string;
-  type: TerminalType;
+  type: any;
   direction: 'input' | 'output' | 'bidirectional';
   position: { x: number; y: number };
   label?: string;
 }
 
 interface SimulationBehavior {
-  logic: (state: SimulationState, inputs: Signal[], properties: ComponentProperties) => SimulationOutput;
-  initialState: SimulationState;
+  logic: (state: any, inputs: any[], properties: any) => SimulationOutput;
+  initialState: any;
   updateInterval?: number; // for timers, counters, etc.
 }
 

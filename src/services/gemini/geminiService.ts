@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import { SYSTEM_PROMPT, ANALYZE_PROMPT, SUGGEST_PROMPT } from './prompts'
 

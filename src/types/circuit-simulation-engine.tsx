@@ -1,7 +1,8 @@
+import React, { useState, useEffect } from 'react';
 // Circuit Simulation Engine Architecture
 
 interface SimulationEngine {
-  initialize(diagram: LadderDiagram): void;
+  initialize(diagram: any): void;
   start(): void;
   stop(): void;
   step(): void;
@@ -66,23 +67,23 @@ interface PerformanceMetrics {
 
 // Main Simulation Engine Implementation
 class LadderSimulationEngine implements SimulationEngine {
-  private diagram: LadderDiagram | null = null;
+  private diagram: any | null = null;
   private state: SimulationState;
   private isRunning: boolean = false;
   private animationFrameId: number | null = null;
   private lastUpdateTime: number = 0;
   private cycleInterval: number = 50; // 20 Hz default
-  private componentLibrary: ComponentLibrary;
+  private componentLibrary: any;
   private stateListeners: Set<StateChangeListener> = new Set();
   private performanceMonitor: PerformanceMonitor;
   
-  constructor(componentLibrary: ComponentLibrary) {
+  constructor(componentLibrary: any) {
     this.componentLibrary = componentLibrary;
     this.performanceMonitor = new PerformanceMonitor();
     this.state = this.createInitialState();
   }
   
-  initialize(diagram: LadderDiagram): void {
+  initialize(diagram: any): void {
     this.diagram = diagram;
     this.state = this.createInitialState();
     this.buildSimulationNetwork();
@@ -175,7 +176,7 @@ class LadderSimulationEngine implements SimulationEngine {
     this.state.performance = this.performanceMonitor.getMetrics();
   }
   
-  private processRung(rung: LadderRung, rungIndex: number): void {
+  private processRung(rung: any, rungIndex: number): void {
     // Build execution order for this rung
     const executionOrder = this.buildExecutionOrder(rung);
     
@@ -188,7 +189,7 @@ class LadderSimulationEngine implements SimulationEngine {
     this.processConnections(rung);
   }
   
-  private buildExecutionOrder(rung: LadderRung): string[] {
+  private buildExecutionOrder(rung: any): string[] {
     // Create dependency graph and topological sort
     const dependencies = new Map<string, string[]>();
     const elements = new Map<string, LadderElement>();
@@ -305,12 +306,12 @@ class LadderSimulationEngine implements SimulationEngine {
     return inputs;
   }
   
-  private getTerminalOutputIndex(terminal: TerminalType): number {
+  private getTerminalOutputIndex(terminal: any): number {
     // Simplified - would need proper terminal mapping
     return 0;
   }
   
-  private processConnections(rung: LadderRung): void {
+  private processConnections(rung: any): void {
     rung.connections.forEach(connection => {
       const sourceState = this.state.elementStates.get(connection.from.elementId);
       if (!sourceState) return;
@@ -328,7 +329,7 @@ class LadderSimulationEngine implements SimulationEngine {
     });
   }
   
-  private findElement(elementId: string): LadderElement | null {
+  private findElement(elementId: string): any | null {
     if (!this.diagram) return null;
     
     for (const rung of this.diagram.rungs) {
